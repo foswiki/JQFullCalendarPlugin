@@ -1,0 +1,10 @@
+data/System/JQFullCalendarPlugin.txt 0644
+lib/Foswiki/Plugins/JQFullCalendarPlugin/FULLCALENDAR.pm 0644
+lib/Foswiki/Plugins/JQFullCalendarPlugin.pm 0644
+pub/System/JQFullCalendarPlugin/fullcalendar.css 0644
+pub/System/JQFullCalendarPlugin/fullcalendar.css.gz 0644
+pub/System/JQFullCalendarPlugin/fullcalendar.js 0644
+pub/System/JQFullCalendarPlugin/fullcalendar.js.gz 0644
+pub/System/JQFullCalendarPlugin/fullcalendar.uncompressed.css 0644
+pub/System/JQFullCalendarPlugin/fullcalendar.uncompressed.js 0644
+pub/System/JQFullCalendarPlugin/Makefile 0644
