@@ -16,17 +16,18 @@ package Foswiki::Plugins::JQFullCalendarPlugin;
 use strict;
 use warnings;
 
-our $VERSION = '$Rev$';
-our $RELEASE = '0.1';
-our $SHORTDESCRIPTION = '<nop>FullCalendar jQuery widget for Foswiki';
+our $VERSION           = '$Rev$';
+our $RELEASE           = '0.1';
+our $SHORTDESCRIPTION  = '<nop>FullCalendar jQuery widget for Foswiki';
 our $NO_PREFS_IN_TOPIC = 1;
 
 use Foswiki::Plugins::JQueryPlugin ();
 
 sub initPlugin {
-  my ($topic, $web, $user) = @_;
+    my ( $topic, $web, $user ) = @_;
 
-  Foswiki::Plugins::JQueryPlugin::registerPlugin('fullcalendar', 'Foswiki::Plugins::JQFullCalendarPlugin::FULLCALENDAR');
+    Foswiki::Plugins::JQueryPlugin::registerPlugin( 'fullcalendar',
+        'Foswiki::Plugins::JQFullCalendarPlugin::FULLCALENDAR' );
 }
 
 1;
