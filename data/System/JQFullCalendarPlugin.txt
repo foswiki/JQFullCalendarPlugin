@@ -13,7 +13,7 @@ for user-triggered events (like clicking or dragging an event).
 
 Homepage: http://arshaw.com/fullcalendar/ %BR%
 Author(s): Adam Shaw %BR%
-Version: 1.4.3 
+Version: 1.5.2 
 
 ---++ Example
 %JQREQUIRE{"fullcalendar"}%

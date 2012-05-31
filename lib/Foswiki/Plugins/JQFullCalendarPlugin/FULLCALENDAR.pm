@@ -47,7 +47,7 @@ sub new {
     homepage => 'http://arshaw.com/fullcalendar/',
     puburl => '%PUBURLPATH%/%SYSTEMWEB%/JQFullCalendarPlugin',
     css => ['fullcalendar.css'],# 'fullcalendar.print.css'],
-    javascript => ['fullcalendar.js', 'gcal.js'],
+    javascript => ['fullcalendar.js'],# 'gcal.js'],
     dependencies => ['ui', 'ui::draggable', 'ui::resizable'], 
   ), $class);
 
