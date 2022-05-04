@@ -1,20 +1,18 @@
 FOSWIKI_ROOT?=~/foswiki/trunk/core
-TARGET=\
-  fullcalendar.js \
-  fullcalendar.css \
-  fullcalendar.print.css \
-  gcal.js
+TARGET=build/pkg.js build/pkg.css
+
+PKG_JS_SOURCE=lib/main.js src/foswiki.js
+PKG_CSS_SOURCE=lib/main.css src/foswiki.css
 
 -include $(FOSWIKI_ROOT)/pub/System/JQueryPlugin/Makefile.include
 
-fullcalendar.uncompressed.js: git/build/fullcalendar/fullcalendar/fullcalendar.js
-	cp $< $@
+clean:
+	rm -f $(TARGET) *.gz
 
-fullcalendar.uncompressed.css: git/build/fullcalendar/fullcalendar/fullcalendar.css
-	cp $< $@
+build/pkg.uncompressed.js: $(PKG_JS_SOURCE)
+	@echo generating $@
+	@cat $^ > $@
 
-fullcalendar.print.uncompressed.css: git/build/fullcalendar/fullcalendar/fullcalendar.print.css
-	cp $< $@
-
-gcal.js: git/build/fullcalendar/fullcalendar/gcal.js
-	cp $< $@
+build/pkg.uncompressed.css: $(PKG_CSS_SOURCE)
+	@echo generating $@
+	@cat $^ > $@

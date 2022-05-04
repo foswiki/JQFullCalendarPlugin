@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2009-2010 Michael Daum, http://michaeldaumconsulting.com
+# Copyright (C) 2009-2022 Michael Daum, http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,19 +16,28 @@ package Foswiki::Plugins::JQFullCalendarPlugin;
 use strict;
 use warnings;
 
-our $VERSION = '$Rev$';
-our $RELEASE = '0.1';
-our $SHORTDESCRIPTION = '<nop>FullCalendar jQuery widget for Foswiki';
+our $VERSION = '3.00';
+our $RELEASE = '04 May 2022';
+our $SHORTDESCRIPTION = '<nop>FullCalendar widget for Foswiki';
 our $NO_PREFS_IN_TOPIC = 1;
 
 use Foswiki::Plugins::JQueryPlugin ();
+use Foswiki::Plugins::JQFullCalendarPlugin::FULLCALENDAR ();
 
 sub initPlugin {
   my ($topic, $web, $user) = @_;
 
-  Foswiki::Plugins::JQueryPlugin::registerPlugin('fullcalendar', 'Foswiki::Plugins::JQFullCalendarPlugin::FULLCALENDAR');
+  Foswiki::Plugins::JQueryPlugin::registerPlugin('FullCalendar', 'Foswiki::Plugins::JQFullCalendarPlugin::FULLCALENDAR');
+
+  Foswiki::Func::registerTagHandler('FULLCALENDAR', sub {
+    return getCore(shift)->FULLCALENDAR(@_);
+  });
 
   return 1;
+}
+
+sub getCore {
+  return Foswiki::Plugins::JQueryPlugin::createPlugin("FullCalendar");
 }
 
 1;

@@ -1,0 +1,13 @@
+*.gz
+*.swp
+*,v
+igp_*
+genpdf_*
+pub/System/JQFullCalendarPlugin/build/
+/JQFullCalendarPlugin.md5
+/JQFullCalendarPlugin.sha1
+/JQFullCalendarPlugin.tgz
+/JQFullCalendarPlugin.txt
+/JQFullCalendarPlugin.zip
+/JQFullCalendarPlugin_installer
+/JQFullCalendarPlugin_installer.pl

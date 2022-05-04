@@ -1,5 +1,6 @@
-%META:TOPICINFO{author="micha" comment="reprev" date="1322828677" format="1.1" reprev="4" version="4"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1451919803" format="1.1" version="1"}%
 ---+ %TOPIC%
+%FORMFIELD{"Description"}%
 
 %STARTSECTION{"summary"}%
 !FullCalendar is a jQuery plugin that provides a full-sized, drag & drop
@@ -11,9 +12,9 @@ for user-triggered events (like clicking or dragging an event).
 
 ---++ Source 
 
-Homepage: http://arshaw.com/fullcalendar/ %BR%
+Homepage: http://fullcalendar.io/ %BR%
 Author(s): Adam Shaw %BR%
-Version: 1.5.2 
+Version: 2.5.0
 
 ---++ Example
 %JQREQUIRE{"fullcalendar"}%
@@ -22,14 +23,14 @@ Version: 1.5.2
 <div id='loading' class="foswikiTipMessage" style='display:none;position:absolute;top:5px;right:5px;'>
   loading...
 </div>
-<div id="calendar2" style="width:650px"></div>
+<div id="calendar2"></div>
 
 ---++ !JavaScript initialisation
 %TWISTY%
 <verbatim class="tml">
 %STARTSECTION{"init"}%
 <literal>
-<script type='text/javascript'>
+<script>
 jQuery(function($) {
     var date = new Date();
     var d = date.getDate();
@@ -37,7 +38,6 @@ jQuery(function($) {
     var y = date.getFullYear();
 
     $('#calendar1').fullCalendar({
-      theme: true,
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -94,7 +94,6 @@ jQuery(function($) {
     });
 
     $('#calendar2').fullCalendar({
-      theme: true,
       editable: true,
       firstDay: 1,
       defaultView: 'agendaWeek',
@@ -137,13 +136,6 @@ jQuery(function($) {
           $('#loading').stop().fadeOut();
         }
       },
-      timeFormat: {
-        // for agendaWeek and agendaDay
-        agenda: 'H:mm{ - H:mm}', 
-
-        // for all other views
-        '': 'h(:mm)'
-      },
       columnFormat: {
         month: 'ddd',
         week: 'ddd d',
@@ -160,37 +152,37 @@ jQuery(function($) {
 
 ---+++ JSON events
 <pre>
-%STARTSECTION{"json-events"}%
-[
+%STARTSECTION{"json-events"}%[
   {
-    id: 1,
-    title: 'Event1',
-    start: '%GMTIME{"$mon $day $year"}%',
-    allDay: true
+    "id": 1,
+    "title": "Event1",
+    "start": "%GMTIME{"$mon $day $year"}%",
+    "allDay": true
   },
   {
-    id: 2,
-    title: 'Workingday',
-    start: '%GMTIME{"$mon $day $year 08:30:00"}%',
-    end: '%GMTIME{"$mon $day $year 15:00:00"}%',
-    allDay: false
+    "id": 2,
+    "title": "Workingday",
+    "start": "%GMTIME{"$mon $day $year 08:30:00"}%",
+    "end": "%GMTIME{"$mon $day $year 15:00:00"}%",
+    "allDay": false
   }
-]
-%ENDSECTION{"json-events"}%
+]%ENDSECTION{"json-events"}%
 </pre>
 
----++ Plugin Info
-<!--
-   * Set SHORTDESCRIPTION = <nop>FullCalendar jQuery widget for Foswiki
--->
-|  Author(s): | Michael Daum |
-|  Copyright: | 2009-2010 Michael Daum http://michaeldaumconsulting.com |
-|  License: | GPL |
-|  Release: | %$RELEASE% |
-|  Version: | %$VERSION% |
-|  Change History: | <!-- versions below in reverse order -->&nbsp; |
-|  26 Mar 2010: | initial release, externalized from Foswiki:Extensions/JQueryPlugin |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Home: | Foswiki:Extensions/%TOPIC% |
-|  Support: | Foswiki:Support/%TOPIC% |
+---++ Dependencies
+%$DEPENDENCIES%
 
+---++ Change History
+|  04 May 2022: | updated fullcalendar js to latest upstream; added full locale support |
+|  26 Mar 2010: | initial release, externalized from Foswiki:Extensions/JQueryPlugin |
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2009-2022 Michael Daum"}%
+%META:FIELD{name="License" title="License" value="GPL"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25TOPIC%25"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25TOPIC%25"}%
