@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1451919803" format="1.1" version="1"}%
+%META:TOPICINFO{author="micha" comment="reprev" date="1661238095" format="1.1" reprev="3" version="3"}%
 ---+ %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -10,139 +10,106 @@ provided for Google Calendar). It is visually customizable and exposes hooks
 for user-triggered events (like clicking or dragging an event).
 %ENDSECTION{"summary"}%
 
+%TOC%
+
 ---++ Source 
 
 Homepage: http://fullcalendar.io/ %BR%
 Author(s): Adam Shaw %BR%
 Version: 2.5.0
 
----++ Example
-%JQREQUIRE{"fullcalendar"}%
-%ADDTOZONE{"script" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN::FULLCALENDAR"}%
+---++ Syntax
 
-<div id='loading' class="foswikiTipMessage" style='display:none;position:absolute;top:5px;right:5px;'>
-  loading...
-</div>
-<div id="calendar2"></div>
+A calendar is rendered using the =%!FULLCALENDAR{"..."}%= macro. All parameters are converted to HTML5 data and forwarded
+to the fullcalendar jquery library. Only exception is the =id="..."= parameter which may be specified to give the resulting
+container that holds the calendar a proper css id attribute. This id can then be used to further configure the calendar beyond
+what is possible via HTML5 data in a dynamic fassion. 
 
----++ !JavaScript initialisation
+See https://fullcalendar.io/docs for a full list of all possible parameters.
+
+A note about the naming conventions: there are three notations of the same parameter when using HTML5 data:
+
+   1 the original fulllcalendar parameter uses keys like =firstDay=
+   1 the same parameter for =%FULLCALENDAR= is called =first_day= 
+   1 in HTML5 data this is =data-first-day=. these are created automatically during initialization.
+
+So basically whenever when you read the docs at fullcalendar.io you need to translate parameter names along these lines.
+
+---++ Examples
+
+*You type:*
+
+<verbatim class="tml">
+%FULLCALENDAR%
+</verbatim>
+
+*You get:*
+
+%FULLCALENDAR%
+
+*You type:*
+
+<verbatim class="tml">
+%FULLCALENDAR{
+   "mycal"
+   editable="true"
+   first_day="1"
+   initial_view="timeGridWeek"
+   events="%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?section=json-events&skin=text&contenttye=text/json"
+}%
+%ADDTOZONE{"script" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN::FULLCALENDAR, JQUERYPLUGIN::PNOTIFY"}%
+%JQREQUIRE{"pnotify"}%
+</verbatim>
+
+*You get:*
+
+%FULLCALENDAR{
+   "mycal"
+   editable="true"
+   first_day="1"
+   initial_view="timeGridWeek"
+   events="%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?section=json-events&skin=text&contenttye=text/json"
+}%
+%ADDTOZONE{"script" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN::FULLCALENDAR, JQUERYPLUGIN::PNOTIFY"}%
+%JQREQUIRE{"pnotify"}%
+
+---+++ !JavaScript initialisation
 %TWISTY%
 <verbatim class="tml">
 %STARTSECTION{"init"}%
 <literal>
 <script>
 jQuery(function($) {
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
+    $('#mycal').livequery(function() {
+      var calendar = $(this).data("calendar");
 
-    $('#calendar1').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      firstDay: 1,
-      editable: true,
-      events: [
-        {
-          title: 'All Day Event',
-          start: new Date(y, m, 1)
-        },
-        {
-          title: 'Long Event',
-          start: new Date(y, m, d-5),
-          end: new Date(y, m, d-2)
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: new Date(y, m, d-3, 16, 0),
-          allDay: false
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: new Date(y, m, d+4, 16, 0),
-          allDay: false
-        },
-        {
-          title: 'Meeting',
-          start: new Date(y, m, d, 10, 30),
-          allDay: false
-        },
-        {
-          title: 'Lunch',
-          start: new Date(y, m, d, 12, 0),
-          end: new Date(y, m, d, 14, 0),
-          allDay: false
-        },
-        {
-          title: 'Birthday Party',
-          start: new Date(y, m, d+1, 19, 0),
-          end: new Date(y, m, d+1, 22, 30),
-          allDay: false
-        },
-        {
-          title: 'Click for Google',
-          start: new Date(y, m, 28),
-          end: new Date(y, m, 29),
-          url: 'http://google.com/'
-        }
-      ]
-    });
+      calendar.setOption("eventDragStop", function(info) {
+         var ev = info.event;
+         console.log("ev=",ev);
+         $.pnotify({
+            title: "Drag Stop",
+            text: `${ev.title} was dragged. id=${ev.id}, start=${ev.start}, end=${ev.end}`
+         });
+      });
 
-    $('#calendar2').fullCalendar({
-      editable: true,
-      firstDay: 1,
-      defaultView: 'agendaWeek',
+      calendar.setOption("eventResize", function(info) {
+         var ev = info.event;
+         console.log("ev=",ev);
+         $.pnotify({
+            title: "Resize",
+            text: `${ev.title} was resized. id=${ev.id}, start=${ev.start}, end=${ev.end}`
+         });
+      });
 
-      events: '%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?section=json-events;skin=text',
-
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-
-      eventDragStop: function(calEvent, jsEvent, ui, view) {
-        alert(calEvent.title + 
-              ' was dragged\n' +
-              'id=' + calEvent.id + '\n' +
-              'start=' + calEvent.start + '\n' +
-              'end='+calEvent.end);
-      },
-
-      eventResize: function(calEvent, jsEvent, ui, view) {
-        alert(calEvent.title + 
-              ' was resized\n' +
-              'id=' + calEvent.id + '\n' +
-              'start=' + calEvent.start + '\n' +
-              'end='+calEvent.end);
-      },
-
-      eventClick: function(calEvent, jsEvent, view) {
-        alert(calEvent.title + ':\n' +
-              'id=' + calEvent.id + '\n' +
-              'start=' + calEvent.start + '\n' +
-              'end='+calEvent.end);
-      },
-
-      loading: function(bool) {
-        if (bool) {
-          $('#loading').stop().show();
-        } else {
-          $('#loading').stop().fadeOut();
-        }
-      },
-      columnFormat: {
-        month: 'ddd',
-        week: 'ddd d',
-        day: 'dddd d'
-      },
-      axisFormat: 'H:mm'
-    });
+      calendar.setOption("eventClick", function(info) {
+         var ev = info.event;
+         console.log("ev=",ev);
+         $.pnotify({
+            title: "Click",
+            text: `${ev.title} was clicked. id=${ev.id}, start=${ev.start}, end=${ev.end}`
+         });
+      });
+   });
 });
 </script>
 </literal>
@@ -156,14 +123,14 @@ jQuery(function($) {
   {
     "id": 1,
     "title": "Event1",
-    "start": "%GMTIME{"$mon $day $year"}%",
+    "start": "%GMTIME{"$year-$mo-$day"}%",
     "allDay": true
   },
   {
     "id": 2,
     "title": "Workingday",
-    "start": "%GMTIME{"$mon $day $year 08:30:00"}%",
-    "end": "%GMTIME{"$mon $day $year 15:00:00"}%",
+    "start": "%GMTIME{"$year-$mo-$dayT08:30:00"}%",
+    "end": "%GMTIME{"$year-$mo-$dayT15:00:00"}%",
     "allDay": false
   }
 ]%ENDSECTION{"json-events"}%
@@ -173,6 +140,8 @@ jQuery(function($) {
 %$DEPENDENCIES%
 
 ---++ Change History
+
+|  23 Aug 2022: | updated documentation and example |
 |  04 May 2022: | updated fullcalendar js to latest upstream; added full locale support |
 |  26 Mar 2010: | initial release, externalized from Foswiki:Extensions/JQueryPlugin |
 

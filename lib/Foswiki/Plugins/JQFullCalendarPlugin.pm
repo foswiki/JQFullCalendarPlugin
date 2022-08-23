@@ -16,8 +16,8 @@ package Foswiki::Plugins::JQFullCalendarPlugin;
 use strict;
 use warnings;
 
-our $VERSION = '3.00';
-our $RELEASE = '04 May 2022';
+our $VERSION = '3.01';
+our $RELEASE = '23 Aug 2022';
 our $SHORTDESCRIPTION = '<nop>FullCalendar widget for Foswiki';
 our $NO_PREFS_IN_TOPIC = 1;
 

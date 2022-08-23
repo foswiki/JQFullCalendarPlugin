@@ -59,6 +59,10 @@
   white-space:normal;
 }
 
+.fc-day-today .fc-daygrid-day-number {
+  color: var(--fc-highlight-fg-color);
+}
+
 :root {
   /* common */
   --fc-small-font-size: var(--font-size-small, .85em);
