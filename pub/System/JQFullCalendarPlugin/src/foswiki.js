@@ -1,7 +1,7 @@
 /*
- * jqFullCalendar foswiki plugin 3.00
+ * jqFullCalendar foswiki plugin 3.04
  *
- * Copyright (c) 2022 Michael Daum http://michaeldaumconsulting.com
+ * Copyright (c) 2022-2024 Michael Daum http://michaeldaumconsulting.com
  *
  * Licensed under the GPL license http://www.gnu.org/licenses/gpl.html
  *
@@ -9,6 +9,10 @@
 "use strict";
 
 jQuery(function($) {
+  function getOrigin() {
+    return (new URLSearchParams(window.location.search)).get("origin");
+  }
+
   var defaults = {
     initialView: 'dayGridMonth',
     weekNumbers: true,
@@ -25,8 +29,7 @@ jQuery(function($) {
       close: {
         text: "Close",
         click: function() {
-          var origin = new URLSearchParams(window.location.search).get("origin") || foswiki.getScriptUrlPath("view", foswiki.getPreference("WEB"), 'WebHome');
-          window.location.assign(origin);
+          window.location.assign(getOrigin());
         }
       },
       reload: {
@@ -40,7 +43,7 @@ jQuery(function($) {
     headerToolbar: {
       start: 'prev,next,today reload',
       center: 'title',
-      end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek close'
+      end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' + (getOrigin() ? ' close' : '')
     },
     eventClick: function(info) {
       var eventObj = info.event;
@@ -51,13 +54,11 @@ jQuery(function($) {
       }
     },
     loading: function(flag) {
-      /*
       if (flag) {
         $.blockUI({message:""});
       } else {
         $.unblockUI();
       }
-      */
     }
   };
 

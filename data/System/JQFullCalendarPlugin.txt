@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="micha" comment="reprev" date="1661238095" format="1.1" reprev="3" version="3"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1661248708" format="1.1" version="1"}%
 ---+ %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -16,11 +16,11 @@ for user-triggered events (like clicking or dragging an event).
 
 Homepage: http://fullcalendar.io/ %BR%
 Author(s): Adam Shaw %BR%
-Version: 2.5.0
+Version: 5.11.2
 
 ---++ Syntax
 
-A calendar is rendered using the =%!FULLCALENDAR{"..."}%= macro. All parameters are converted to HTML5 data and forwarded
+A calendar is rendered using the =%FULLCALENDAR= macro. All parameters are converted to HTML5 data and forwarded
 to the fullcalendar jquery library. Only exception is the =id="..."= parameter which may be specified to give the resulting
 container that holds the calendar a proper css id attribute. This id can then be used to further configure the calendar beyond
 what is possible via HTML5 data in a dynamic fassion. 
@@ -141,6 +141,7 @@ jQuery(function($) {
 
 ---++ Change History
 
+|  22 Jan 2024: | updated fullcalendar js to 5.11.2 |
 |  23 Aug 2022: | updated documentation and example |
 |  04 May 2022: | updated fullcalendar js to latest upstream; added full locale support |
 |  26 Mar 2010: | initial release, externalized from Foswiki:Extensions/JQueryPlugin |
@@ -151,7 +152,7 @@ jQuery(function($) {
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2009-2022 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2009-2024 Michael Daum"}%
 %META:FIELD{name="License" title="License" value="GPL"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25TOPIC%25"}%
 %META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25TOPIC%25"}%

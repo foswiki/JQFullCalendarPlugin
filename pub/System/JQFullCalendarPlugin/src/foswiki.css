@@ -60,7 +60,8 @@
 }
 
 .fc-day-today .fc-daygrid-day-number {
-  color: var(--fc-highlight-fg-color);
+  color: var(--fc-today-fg-color);
+  font-weight: var(--font-weight-bold);
 }
 
 :root {
@@ -98,6 +99,7 @@
   --fc-bg-event-color: rgb(143, 223, 130); /* TODO */
   --fc-bg-event-opacity: 0.3;
   --fc-today-bg-color: var(--color-secondary-alpha-9, rgba(255, 220, 40, 0.15));
+  --fc-today-fg-color: var(--color-ternary-lighter-3, --fc-highlight-fg-color);
   --fc-now-indicator-color: var(--color-red, red);
 
   --fc-highlight-bg-color: var(--color-selected-background, rgba(188, 232, 241, 0.3));

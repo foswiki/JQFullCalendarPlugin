@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2006-2022 Michael Daum, http://michaeldaumconsulting.com
+# Copyright (C) 2006-2024 Michael Daum, http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -31,7 +31,7 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'FullCalendar',
-      version => '5.10.1',
+      version => '5.11.2',
       author => 'Adam Shaw',
       homepage => 'http://fullcalendar.io/',
       puburl => '%PUBURLPATH%/%SYSTEMWEB%/JQFullCalendarPlugin',

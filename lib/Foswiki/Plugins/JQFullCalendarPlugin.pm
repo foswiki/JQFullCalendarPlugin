@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2009-2022 Michael Daum, http://michaeldaumconsulting.com
+# Copyright (C) 2009-2024 Michael Daum, http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,9 +16,10 @@ package Foswiki::Plugins::JQFullCalendarPlugin;
 use strict;
 use warnings;
 
-our $VERSION = '3.01';
-our $RELEASE = '23 Aug 2022';
+our $VERSION = '3.03';
+our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = '<nop>FullCalendar widget for Foswiki';
+our $LICENSECODE = '%$LICENSECODE%';
 our $NO_PREFS_IN_TOPIC = 1;
 
 use Foswiki::Plugins::JQueryPlugin ();
