@@ -1,6 +1,7 @@
 !noci
 data/System/JQFullCalendarPlugin.txt 0644
 lib/Foswiki/Plugins/JQFullCalendarPlugin/DEPENDENCIES 0644
+lib/Foswiki/Plugins/JQFullCalendarPlugin/MANIFEST 0644
 lib/Foswiki/Plugins/JQFullCalendarPlugin/FULLCALENDAR.pm 0644
 lib/Foswiki/Plugins/JQFullCalendarPlugin.pm 0644
 pub/System/JQFullCalendarPlugin/build/pkg.css 0644

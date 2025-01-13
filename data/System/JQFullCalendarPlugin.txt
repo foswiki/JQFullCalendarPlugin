@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1661248708" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1736783587" format="1.1" version="1"}%
 ---+ %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -141,6 +141,7 @@ jQuery(function($) {
 
 ---++ Change History
 
+|  13 Jan 2025: | added support for css variables in theming |
 |  22 Jan 2024: | updated fullcalendar js to 5.11.2 |
 |  23 Aug 2022: | updated documentation and example |
 |  04 May 2022: | updated fullcalendar js to latest upstream; added full locale support |
@@ -152,7 +153,7 @@ jQuery(function($) {
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2009-2024 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2009-2025 Michael Daum"}%
 %META:FIELD{name="License" title="License" value="GPL"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25TOPIC%25"}%
 %META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25TOPIC%25"}%
